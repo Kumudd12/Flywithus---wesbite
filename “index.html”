@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Website — Starter Template</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6fbff; --card:#ffffff; --accent:#2563eb; --muted:#61708a; --radius:14px;
+      --max-w:1100px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0b1724;line-height:1.45}
+    .container{max-width:var(--max-w);margin:40px auto;padding:24px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+    nav{display:flex;gap:16px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .btn{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
+    .hero-card{background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:0 6px 22px rgba(16,24,40,0.06)}
+    h1{font-size:34px;margin:0 0 12px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+
+    /* Features */
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0}
+    .feature{background:var(--card);padding:18px;border-radius:12px}
+    .feature h3{margin:8px 0 4px;font-size:16px}
+    .feature p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Contact */
+    form label{display:block;font-size:13px;margin:10px 0 6px;color:var(--muted)}
+    input,textarea{width:100%;padding:10px;border-radius:10px;border:1px solid #e6eef8;font-size:14px}
+    textarea{min-height:120px}
+
+    footer{margin:48px 0 20px;color:var(--muted);font-size:14px;text-align:center}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:600px){
+      header{flex-direction:column;align-items:flex-start}
+      nav{order:2;width:100%;display:flex;justify-content:space-between}
+      .features{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">MW</div>
+        <div>
+          <div style="font-weight:800;letter-spacing:0.2px">Malta Work Permit</div>
+          <div style="font-size:12px;color:var(--muted)">Starter website template</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="hero-card">
+          <h1>Professional, clean website — ready to customize</h1>
+          <p class="lead">A single-file responsive template with hero, features, and a contact form. Perfect for small business, portfolio, or agency landing pages.</p>
+          <ul style="margin:12px 0 0;padding-left:18px;color:var(--muted)">
+            <li>Responsive layout</li>
+            <li>Easy colors & typography to change</li>
+            <li>Contact form (front-end only)</li>
+          </ul>
+        </div>
+
+        <div id="features" class="features">
+          <div class="feature">
+            <strong>Fast to edit</strong>
+            <h3>Simple markup</h3>
+            <p>All code is in one file — open and change text, colors, images quickly.</p>
+          </div>
+          <div class="feature">
+            <strong>Responsive</strong>
+            <h3>Mobile-friendly</h3>
+            <p>Looks great on phones, tablets, and desktops.</p>
+          </div>
+          <div class="feature">
+            <strong>Modern look</strong>
+            <h3>Clean design</h3>
+            <p>Soft shadows, rounded cards, and readable typography.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="hero-card">
+          <h3 style="margin-top:0">Get in touch</h3>
+          <form id="contact" onsubmit="handleSubmit(event)">
+            <label for="name">Full name</label>
+            <input id="name" name="name" required placeholder="Ayesha" />
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com" />
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell me about your project"></textarea>
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn" type="submit">Send message</button>
+              <button type="button" onclick="resetForm()" style="padding:10px 14px;border-radius:10px;border:1px solid #e6eef8;background:#fff;cursor:pointer">Reset</button>
+            </div>
+            <p id="status" style="font-size:13px;color:var(--muted);margin-top:10px"></p>
+          </form>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about" style="margin-top:20px">
+      <div style="background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.04)">
+        <h2 style="margin-top:0">About this template</h2>
+        <p style="color:var(--muted)">This is a lightweight starting point. Replace the brand name, change colors (see :root in CSS), and hook the contact form to your email or backend when ready.</p>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Malta Work Permit • Made with ♥
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function handleSubmit(e){
+      e.preventDefault();
+      const status = document.getElementById('status');
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if(!name||!email){ status.textContent='Please fill name and email.'; return }
+      // This is frontend-only. Hook to your server or email service here.
+      status.textContent = 'Message captured (front-end demo). I can help wire this to email or WhatsApp.';
+      setTimeout(()=>status.textContent='Message sent — demo only.',1800);
+      document.getElementById('contact').reset();
+    }
+    function resetForm(){ document.getElementById('contact').reset(); document.getElementById('status').textContent=''; }
+  </script>
+
+  <!--
+    How to use:
+    1) Save this file as index.html and open in browser to preview.
+    2) Edit the text, replace the logo, and change :root colors for a different palette.
+    3) To receive form submissions: connect the form to a backend endpoint or services like Formspree, Netlify Forms, or Zapier.
+
+    If you want a multi-page site, React/Vue version, or a custom design (colors, logo, content), tell me what you want and I'll update it.
+  -->
+</body>
+</html>
